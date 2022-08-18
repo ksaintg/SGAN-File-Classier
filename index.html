@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>File Classifier</title>
+    <title>SGAN File Classifier</title>
 
 <script src="https://d3js.org/d3.v6.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -46,10 +46,7 @@ a:active {
 
  <body text="#ffffff">
 
-<br>
-<br>
-<br>
-<div class="about">
+
 <p>Upload a file and we will attempt to identify the file type.  Change or remove the file extension, and even use a file editor to replace the first few bytes with different values.  <a href="https://faculty.cyber.usna.edu/~stgermai/bytes.html">Refresh the page after each file classification.</a></p>
 <p>The model is only trained on 11 different types:  </p>
 
@@ -71,7 +68,7 @@ a:active {
 
 </ul>
 
-</div>
+
 
 <input type='file' id='file-selector'>
 
@@ -86,12 +83,12 @@ a:active {
 <p id="number"></p>
 
 
-<div class="about">
+
 
 <p id="fileisa"></p>
 <p id="result"></p>
 
-</div>
+
 
 <p id="myPlot"></p>
 <p id="scaledy"></p>
