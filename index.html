@@ -133,14 +133,7 @@ var layout = {title:"scaled byte distribution"};
 
 Plotly.newPlot("myPlot", data, layout);
 
-files = new Map(await Promise.all([
-  FileAttachment("model.json"),
-  FileAttachment("group1-shard1of1.bin")
-].map(async f => [f.name, await f.url()])))
-	    
-model = await tf.loadLayersModel("/model.json", {
-  fetchFunc: (url, ...options) => fetch(files.get(url.slice(1)), ...options)
-});    
+model = await tf.loadLayersModel(await FileAttachment("model.json").url());  
 	    
 
 }
