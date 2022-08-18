@@ -93,7 +93,6 @@ var reader = new FileReader();
 			console.log(fileByteArray)
 		arrayBuffer = [];
 		}
-//document.getElementById("result").innerHTML = fileByteArray;
 	
 
 let histGenerator = d3.bin()
@@ -134,10 +133,15 @@ var layout = {title:"scaled byte distribution"};
 
 Plotly.newPlot("myPlot", data, layout);
 
-tf.loadLayersModel("https://ksaintg.github.io/SGAN-File-Classifier/model.json").then(function(model)
-{
-window.model = model;
-});
+files = new Map(await Promise.all([
+  FileAttachment("model.json"),
+  FileAttachment("group1-shard1of1.bin")
+].map(async f => [f.name, await f.url()])))
+	    
+model = await tf.loadLayersModel("/model.json", {
+  fetchFunc: (url, ...options) => fetch(files.get(url.slice(1)), ...options)
+})	    
+	    
 
 }
 
