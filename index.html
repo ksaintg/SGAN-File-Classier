@@ -133,7 +133,7 @@ var layout = {title:"scaled byte distribution"};
 
 Plotly.newPlot("myPlot", data, layout);
 
-model = await tf.loadLayersModel(await FileAttachment("model.json").url());  
+model = tf.loadLayersModel(await FileAttachment("model.json").url());  
 	    
 
 }
