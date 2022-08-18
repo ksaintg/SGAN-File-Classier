@@ -134,30 +134,13 @@ var layout = {title:"scaled byte distribution"};
 
 Plotly.newPlot("myPlot", data, layout);
 
-
-<!-- // ctrl-q to bulk comment -->
-
-tf.loadLayersModel('model.json').then(function(model)
+tf.loadLayersModel("https://ksaintg.github.io/SGAN-File-Classifier/model.json").then(function(model)
 {
 window.model = model;
 });
 
-
 }
 
-// end of listener section... put the }) back here.
-
-
-<!-- let fileisa = []; -->
-
-
-
-//const input = document.querySelector('input')
-
-//const inputfile = document.getElementById('file-selector')
-
-
-<!-- input = []; -->
 
 var predict = function(scaledy) {
 		
@@ -165,7 +148,6 @@ var predict = function(scaledy) {
       if (window.model) {
 
 	  window.model.predict([tf.tensor(scaledy).reshape([1,256])]).array().then(function(scores){
-        //window.model.predict([tf.tensor(scaledy).reshape([1,256])]).array().then(function(scores){
           scores = scores[0];
           predicted = scores.indexOf(Math.max(...scores));
 		  switch(predicted){
