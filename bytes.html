@@ -5,16 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>File Classifier</title>
-    <script type="text/javascript" src="customJS.js"></script>
 
 <script src="https://d3js.org/d3.v6.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.2/dist/tf.min.js"></script>
-<!-- <script type="text/javascript" src="classifier.js"></script> -->
 
 </head>
 
@@ -49,12 +46,10 @@ a:active {
 
  <body text="#ffffff">
 
-<p style="text-align:center;"><img src="images/banner_construction.gif"></p>
 <br>
 <br>
 <br>
 <div class="about">
-<p>This webpage is based on the work that <a href="https://faculty.cyber.usna.edu/~stgermai">Ken</a> and <a href="https://faculty.cyber.usna.edu/~angichio">Josh</a> did.  </p>  
 <p>Upload a file and we will attempt to identify the file type.  Change or remove the file extension, and even use a file editor to replace the first few bytes with different values.  <a href="https://faculty.cyber.usna.edu/~stgermai/bytes.html">Refresh the page after each file classification.</a></p>
 <p>The model is only trained on 11 different types:  </p>
 
@@ -103,11 +98,6 @@ a:active {
 
 <script>
 
-
-
-
-<!-- var scaledy = []; -->
-
 var scaledy = [];
 
 
@@ -118,8 +108,6 @@ var fileByteArray = [];
 var binner = [];
 var yarray = [];
 var xarray = [];
-
-
 
 var reader = new FileReader();
 
@@ -162,8 +150,6 @@ yarray.push(binner[i].length);
 let maximum = Math.max(...yarray);
 let minimum = Math.min(...yarray);
 
-
-
 for (var i = 0; i < yarray.length; i++) {
 scaledy.push((yarray[i] - minimum) / (maximum - minimum));
 }
@@ -181,7 +167,7 @@ Plotly.newPlot("myPlot", data, layout);
 
 <!-- // ctrl-q to bulk comment -->
 
-tf.loadLayersModel('https://faculty.cyber.usna.edu/~stgermai/model.json').then(function(model)
+tf.loadLayersModel('model.json').then(function(model)
 {
 window.model = model;
 });
@@ -200,8 +186,6 @@ window.model = model;
 
 //const inputfile = document.getElementById('file-selector')
 
-
-	
 
 <!-- input = []; -->
 
@@ -275,14 +259,6 @@ scaledy = [];
 
 </script>
 
-<!-- <script>predict(scaledy);<\script> -->
-
-<div class="oldschool">
-            <img src="images/counter.gif">
-            <img src="images/ns_logo.gif">
-            <img src="images/noframes.gif">
-        </div>
-<p style="text-align:center;"><img src="images/banner_construction.gif"></p>
 
 </body>
 </html>
