@@ -140,7 +140,7 @@ files = new Map(await Promise.all([
 	    
 model = await tf.loadLayersModel("/model.json", {
   fetchFunc: (url, ...options) => fetch(files.get(url.slice(1)), ...options)
-})	    
+});    
 	    
 
 }
