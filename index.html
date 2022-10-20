@@ -133,7 +133,7 @@ var layout = {title:"scaled byte distribution"};
 
 Plotly.newPlot("myPlot", data, layout);
 
-tf.loadLayersModel("model.json").then(function(model)
+tf.loadLayersModel("https://ksaintg.github.io/SGAN-File-Classier/model.json").then(function(model)
 {
 window.model = model;
 });
